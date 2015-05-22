@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+    - source: puppet/
+      destination: /etc/puppet/modules/codedeploy
+    - source: src/hiera.yaml
+      destination: /etc/puppet
+    - source: hiera_data/
+      destination: /etc/puppet/hiera/data
+hooks:
+  BeforeInstall:
+    - location: deploy_hooks/install-puppet.sh
+      runas: root
+  ApplicationStart:
+    - location: deploy_hooks/puppet-apply.sh
+      runas: root
+  ValidateService:
+    - location: deploy_hooks/verify-service.sh
+      runas: root

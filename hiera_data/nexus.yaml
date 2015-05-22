@@ -1,0 +1,4 @@
+---
+codedeploy::nexus_server::version: '2.11.2'
+codedeploy::nexus_server::revision: '06'
+codedeploy::nexus_server::root_path: '/srv'
